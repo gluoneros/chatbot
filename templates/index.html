@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <div id="chatbox">
+        <div id="messages"></div>
+        <form id="chat-form">
+            <input type="text" id="message" name="message" placeholder="Escribe tu mensaje">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = document.getElementById('message').value;
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<p><b>Tú:</b> ${message}</p>`;
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `message=${encodeURIComponent(message)}`
+            });
+            const data = await response.json();
+            messagesDiv.innerHTML += `<p><b>Bot:</b> ${data.response}</p>`;
+            document.getElementById('message').value = '';
+        });
+    </script>
+</body>
+</html>

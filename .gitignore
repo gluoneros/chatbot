@@ -1,0 +1,33 @@
+# Archivos y directorios de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Entornos virtuales
+env/
+venv/
+ENV/
+.venv/
+.ENV/
+
+# Archivos de configuración de IDEs
+.idea/
+.vscode/
+*.iml
+
+# Archivos de logs
+*.log
+
+# Archivos de dependencias
+*.egg-info/
+dist/
+build/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de Git
+.git/
